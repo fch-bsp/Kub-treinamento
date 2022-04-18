@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: backend-dp
+  labels:
+    app: backend-app
+    type: backend
+spec:
+  templates:
+    metadata:
+      name: backend-pod
+      labels: 
+        app: backend-app
+        type: backend    
+  spec:
+    containes:
+      - name: backend-container
+        type: nginx
+  selector:  
+    matchLabels:
+      type: backend-container
+  replicas: 6
